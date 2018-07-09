@@ -1,19 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IdentifyModel } from '../../../+core/models/identify.model';
 
 @Component({
-    selector: 'app-auth-page',
-    templateUrl: './auth-page.html',
-    styleUrls: ['./auth-page.scss']
+  selector: 'app-auth-page',
+  templateUrl: './auth-page.html',
+  styleUrls: ['./auth-page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthPageComponent implements OnInit, OnDestroy {
 
-    constructor() {
-    }
+  constructor() {
+  }
 
-    public ngOnInit() {
-    }
+  public ngOnInit() {
+  }
 
-    public ngOnDestroy(): void {
-    }
+  public ngOnDestroy(): void {
+  }
 }

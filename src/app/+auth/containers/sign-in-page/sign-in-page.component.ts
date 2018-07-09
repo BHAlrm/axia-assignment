@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { forEach } from 'lodash';
 import { Observable } from 'rxjs/Rx';
@@ -11,7 +11,8 @@ import * as fromAuth from '../../reducers';
 @Component({
   selector: 'app-sign-in-page',
   templateUrl: './sign-in-page.html',
-  styleUrls: ['./sign-in-page.scss']
+  styleUrls: ['./sign-in-page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignInPageComponent implements OnInit, OnDestroy {
   public loading$: Observable<boolean>;

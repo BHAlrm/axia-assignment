@@ -1,15 +1,16 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 import { SignOut } from '../../../+auth/actions';
-import * as fromMovie from '../../reducers';
 import { Get, Delete } from '../../actions';
 import { MovieModel } from '../../models/movie.model';
+import * as fromMovie from '../../reducers';
 
 @Component({
   selector: 'app-movie-page',
   encapsulation: ViewEncapsulation.Emulated,
-  templateUrl: './movie-page.html'
+  templateUrl: './movie-page.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MoviePageComponent implements OnInit {
   public movies$: Observable<MovieModel[]>;

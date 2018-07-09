@@ -1,11 +1,12 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmailSignInModel } from '../../models/email-sign-in.model';
 
 @Component({
   selector: 'app-email-sign-in-form',
   templateUrl: './email-sign-in-form.html',
-  styleUrls: ['./email-sign-in-form.scss']
+  styleUrls: ['./email-sign-in-form.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmailSignInFormComponent implements OnInit {
   @Input() public loading: boolean = false;

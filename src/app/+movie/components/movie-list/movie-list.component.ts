@@ -1,11 +1,19 @@
-import { Component, ViewEncapsulation, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { EmailSignInModel } from '../../../+auth/models/email-sign-in.model';
+import {
+  Component,
+  ViewEncapsulation,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { MovieModel } from '../../models/movie.model';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.html',
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MovieListComponent implements OnInit {
 
