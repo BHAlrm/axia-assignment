@@ -1,0 +1,24 @@
+<div class="m-grid m-grid--hor m-grid--root m-page">
+  <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-grid--root app-movie">
+    <div class="m-grid__item m-grid__item--fluid">
+      <div class="app-movie__container">
+        <div class="app-movie__header">
+          <div class="app-movie__logo">
+            <a href="#">
+              Movie
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:;" (click)="signOut()">Sign Out</a>
+          </div>
+        </div>
+
+        <div class="app-movie__body">
+          <app-movie-list [data]="movies$ | async"
+                          [editable]="editable$ | async"
+                          (onClickDelete)="onDeleteItem($event)">
+          </app-movie-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

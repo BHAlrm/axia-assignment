@@ -1,0 +1,63 @@
+{
+  "compilerOptions": {
+    "charset": "utf8",
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "strictNullChecks": false,
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "baseUrl": "..",
+    "paths": {
+      "@angular/*": [
+        "node_modules/@angular/*"
+      ],
+      "@environment/*": [
+        "src/environments/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@test/*": [
+        "src/testing/*"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@angular",
+      "node_modules/@ngrx",
+      "node_modules/@ngtools",
+      "node_modules/@swimlane",
+      "node_modules/@types",
+      "node_modules/rxjs",
+      "node_modules/@firebase"
+    ],
+    "types": [
+      "hammerjs",
+      "jest",
+      "node",
+      "source-map",
+      "uglify-js",
+      "webpack"
+    ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "preserveWhitespaces": false
+  },
+  "exclude": [
+    "./node_modules",
+    "dist",
+    "config"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false
+}

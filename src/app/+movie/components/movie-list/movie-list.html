@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let movie of data">
+    {{movie.title}} - {{movie.released.seconds | date }} - {{movie.rating}}
+    <a href="javascript:;" *ngIf="editable" (click)="onClickDelete.emit(movie);">delete</a>
+  </li>
+</ul>

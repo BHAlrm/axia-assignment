@@ -1,0 +1,12 @@
+<div class="app-auth__head">
+  <h3 class="app-auth__title text-center">Sign Up</h3>
+</div>
+<div *ngIf="!!(error$ | async)"
+     class="m-alert m-alert--outline alert alert-danger alert-dismissible animated fadeIn"
+     role="alert">
+  <span>{{error$ | async}}, please try again.</span>
+</div>
+<app-email-sign-up-form
+    (register)="signUp($event)"
+    [loading]="loading$ | async">
+</app-email-sign-up-form>

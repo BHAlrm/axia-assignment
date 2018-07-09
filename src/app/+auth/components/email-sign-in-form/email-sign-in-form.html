@@ -1,0 +1,44 @@
+<form [formGroup]="signInForm" class="app-auth__form m-form" (submit)="onSubmit()">
+  <div class="form-group m-form__group" [class.has-danger]="isControlInValid('email')">
+    email:
+    <input class="form-control m-input"
+           formControlName="email"
+           type="email"
+           placeholder="Email">
+    <div class="form-control-feedback" *ngIf="hasError('email', 'required')">
+      required
+    </div>
+    <div class="form-control-feedback" *ngIf="hasError('email', 'email')">
+      invalid email
+    </div>
+  </div>
+  <div class="form-group m-form__group"
+       [class.has-danger]="isControlInValid('password')">
+    password:
+    <input class="form-control m-input"
+           formControlName="password"
+           type="password"
+           placeholder="Password">
+    <div class="form-control-feedback" *ngIf="hasError('password', 'required')">
+      required
+    </div>
+  </div>
+  <div class="row app-auth__form-sub">
+    <div class="col m--align-left">
+      <label class="m-checkbox m-checkbox--accent">
+        <input type="checkbox" formControlName="isKeepLogin"> remember me
+        <span></span>
+      </label>
+    </div>
+  </div>
+  <div class="app-auth__form-action">
+    <button class="btn btn-focus m-btn m-btn--air app-auth__btn m-btn--custom"
+            [class.m-loader--right]="loading"
+            [class.m-loader--light]="loading"
+            [class.m-loader]="loading"
+            [disabled]="loading"
+            type="submit">
+      sign in
+    </button>
+  </div>
+</form>
