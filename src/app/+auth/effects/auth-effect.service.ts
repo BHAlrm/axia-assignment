@@ -4,7 +4,7 @@ import { Effect, ofType, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { of } from 'rxjs/index';
-import { map, exhaustMap, tap } from 'rxjs/internal/operators';
+import { map, tap, switchMap } from 'rxjs/internal/operators';
 import { Observable } from 'rxjs/Rx';
 import { toPayload } from '../../shared/to-payload.util';
 import {
@@ -42,8 +42,8 @@ export class AuthEffect {
     ofType<GetProfile>(AuthActionTypes.GetProfile),
     // Projects each source value to an Observable which is merged in the output
     // Observable only if the previous projected Observable has completed.
-    exhaustMap(() => this.afAuth.authState),
-    exhaustMap(authData => this.authService.getProfile(authData)),
+    switchMap(() => this.afAuth.authState),
+    switchMap(authData => this.authService.getProfile(authData)),
     map(profile => {
       if (!!profile) {
 
@@ -60,7 +60,7 @@ export class AuthEffect {
   public signIn$: Observable<Action> = this.actions$.pipe(
     ofType<EmailSignIn>(AuthActionTypes.EmailSignIn),
     map(toPayload),
-    exhaustMap((auth) => this.authService.signIn(auth.email, auth.password, auth.isKeepSignIn)
+    switchMap((auth) => this.authService.signIn(auth.email, auth.password, auth.isKeepSignIn)
       .map(() => new GetProfile())
       .catch(error => of(new AuthError({ error: error.message })))
     )
@@ -70,7 +70,7 @@ export class AuthEffect {
   public signUp$: Observable<Action> = this.actions$.pipe(
     ofType<EmailSignUp>(AuthActionTypes.EmailSignUp),
     map(toPayload),
-    exhaustMap((auth: EmailSignUpModel) => this.authService.signUp(auth.email, auth.password, auth.role)
+    switchMap((auth: EmailSignUpModel) => this.authService.signUp(auth.email, auth.password, auth.role)
       .map(() => new GetProfile())
       .catch(error => of(new AuthError({ error: error.message })))
     )
@@ -80,7 +80,7 @@ export class AuthEffect {
   public signOut$: Observable<Action> = this.actions$.pipe(
     ofType<SignOut>(AuthActionTypes.SignOut),
     map(toPayload),
-    exhaustMap(() => this.authService.signOut()
+    switchMap(() => this.authService.signOut()
       .switchMap(() => [new NotAuthenticated()]))
   );
 
