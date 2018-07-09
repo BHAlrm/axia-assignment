@@ -1,13 +1,11 @@
 const mock = () => {
-  //Mock our local storage
+  // Mock our local storage
   let storage = {};
   return {
     getItem: key => key in storage ? storage[key] : null,
     setItem: (key, value) => storage[key] = value || '',
     removeItem: key => delete storage[key],
-    clear: () => storage = {},
-    HMR: false,
-    VERSION: 'test'
+    clear: () => storage = {}
   };
 };
 
@@ -16,8 +14,10 @@ Object.defineProperty(window, 'sessionStorage', {value: mock()});
 Object.defineProperty(window, 'getComputedStyle', {
   value: () => ['-webkit-appearance']
 });
+Object.defineProperty(window, 'HMR', { value: true });
+Object.defineProperty(window, 'VERSION', { value: 'test' });
 
-//Important if you use angular animations.
+// Important if you use angular animations.
 Object.defineProperty(document.body.style, 'transform', {
   value: () => {
     return {

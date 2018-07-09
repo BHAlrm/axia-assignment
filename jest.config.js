@@ -12,7 +12,7 @@ module.exports = {
     },
     '__TRANSFORM_HTML__': true
   },
-  setupTestFrameworkScriptFile: '<rootDir>/src/testing/setup-jest.ts',
+  setupTestFrameworkScriptFile: '<rootDir>/src/test/setup-jest.ts',
   transform: {
     '^.+\\.(ts|html)$': '<rootDir>/node_modules/jest-preset-angular/preprocessor.js',
   },
